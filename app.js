@@ -87,7 +87,15 @@ function aperturaCalculadoras() {
           '$';
         resultCalculator.append(imprimir);
 
-        localStorage.setItem('resultado', JSON.stringify(resultadoCalculadora));
+        localStorage.setItem(
+          'resultado',
+          JSON.stringify(
+            `El IVA de su producto es de ${resultadoCalculadora}` +
+              '$. El precio final de su producto es de ' +
+              precioFinal +
+              '$'
+          )
+        );
         break;
       /* FIN DE CALCULADORA DE IVA */
 
