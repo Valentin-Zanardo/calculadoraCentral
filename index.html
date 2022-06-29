@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadoras</title>
+    <link rel="shortcut icon" href="./img/calculator.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <main>
+        <!--------------------------------------------------------------EMPIEZA LA BIENVENIDA A LOS USERS  ---------------------------------------------------------------------------->
+        <div class="bienvenida">
+            <h1 class="animate__animated animate__bounceInDown">¡Bienvenido a la <br> central de <b>calculadoras</b>!
+            </h1>
+            <a href="#secondPart" class="animate__animated animate__rotateIn"><svg xmlns="http://www.w3.org/2000/svg"
+                    width="56" height="56" fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16" id="flecha">
+                    <path fill-rule="evenodd"
+                        d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z" />
+                </svg></a>
+        </div>
+        <!--------------------------------------------------------------TERMINA LA BIENVENIDA A LOS USERS  ---------------------------------------------------------------------------->
+
+        <!--------------------------------------------------------------EMPIEZA EL MENU EN EL QUE APARECE EL BOTÓN  -------------------------------------------------------------------> 
+        <div class="activateBoton">
+            <h2 data-aos="flip-up" data-aos-duration="1000" id="secondPart">Apreta este Botón para acceder a las
+                calculadoras</h2>
+            <button id="botonCalculadora" type="button" class="btn btn-outline-info" data-aos="flip-down"
+                data-aos-duration="1000">CALCULADORAS</button>
+            <div id="resultCalculator"></div>
+            <a id="resultadosAnteriores">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-three-dots" viewBox="0 0 16 16">
+                    <path
+                        d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
+                        Accione este botón para ver su resultado anterior
+                </svg>
+                Accione este botón para ver su resultado anterior
+            </a>
+        </div>
+        <!--------------------------------------------------------------EMPIEZA EL MENU EN EL QUE APARECE EL BOTÓN  ------------------------------------------------------------------->
+    </main>
+    <script src="./app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous">
+    </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+
+</html>
