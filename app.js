@@ -11,12 +11,16 @@ let resultadosAnteriores = document.getElementById('resultadosAnteriores');
 
 //agregamos el evento que queremos que ejecute el boton
 resultadosAnteriores.addEventListener('click', () => {
-  guardarResultado = document.createElement('p');
-  guardarResultado.innerHTML = `Su último resultado es igual a ${localStorage.getItem(
-    'resultado'
-  )}`;
-  resultCalculator.append(guardarResultado);
-  resultadosAnteriores.remove();
+  if (localStorage.length == 0) {
+    alert('Lo sentimos, usted no posee un resultado previo.');
+  } else {
+    guardarResultado = document.createElement('p');
+    guardarResultado.innerHTML = `Su último resultado es igual a ${localStorage.getItem(
+      'resultado'
+    )}`;
+    resultCalculator.append(guardarResultado);
+    resultadosAnteriores.remove();
+  }
 });
 /* FUNCION QUE ACTIVA EL BOTÓN DE LAS CALCULADORA */
 function aperturaCalculadoras() {
