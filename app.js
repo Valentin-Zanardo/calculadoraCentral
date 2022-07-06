@@ -11,9 +11,12 @@ let resultadosAnteriores = document.getElementById('resultadosAnteriores');
 
 //agregamos el evento que queremos que ejecute el boton
 resultadosAnteriores.addEventListener('click', () => {
-  if (localStorage.length == 0) {
-    alert('Lo sentimos, usted no posee un resultado previo.');
-  } else {
+  //* Si el localStorage no tiene nada, mande una alerta y si tiene que lo imprima y borre el botón
+  localStorage.length === 0
+    ? Swal.fire('Lo sentimos, usted no posee un resultado previo.')
+    : correrLocal();
+  function correrLocal() {
+    //* En esta funcion creamos un párrafo para imprimir el localStorage y borramos el botón
     guardarResultado = document.createElement('p');
     guardarResultado.innerHTML = `Su último resultado es igual a ${localStorage.getItem(
       'resultado'
@@ -149,28 +152,34 @@ function aperturaCalculadoras() {
                 totalProte = peso * 2;
                 break;
               default:
-                alert('Por favor ingresar un número del 1 al 7.');
+                Swal.fire(
+                  '¿Estás ingresando un número de 1 al 7?',
+                  '¡Por favor intenta otra vez!',
+                  'question'
+                );
                 break;
             }
-            imprimir = document.createElement('p');
-            resultadoCalculadora = totalProte;
+            if (ejercicioSemanal1 <= 7) {
+              imprimir = document.createElement('p');
+              resultadoCalculadora = totalProte;
 
-            imprimir.innerHTML =
-              'La cantidad de Proteinas que debe comer es de ' +
-              resultadoCalculadora +
-              'g';
-            resultCalculator.append(imprimir);
-            alert(
-              '¡Recuerde que siempre es mejor acudir con un profesional en nutrición!'
-            );
-            localStorage.setItem(
-              'resultado',
-              JSON.stringify(
+              imprimir.innerHTML =
                 'La cantidad de Proteinas que debe comer es de ' +
-                  resultadoCalculadora +
-                  'g'
-              )
-            );
+                resultadoCalculadora +
+                'g';
+              resultCalculator.append(imprimir);
+              Swal.fire(
+                '¡Recuerde que siempre es mejor acudir con un profesional en nutrición!'
+              );
+              localStorage.setItem(
+                'resultado',
+                JSON.stringify(
+                  'La cantidad de Proteinas que debe comer es de ' +
+                    resultadoCalculadora +
+                    'g'
+                )
+              );
+            }
             break;
 
           case 2:
@@ -205,40 +214,45 @@ function aperturaCalculadoras() {
                 totalGrasa = peso * 1.3;
                 break;
               default:
-                alert('Por favor ingresar un número del 1 al 7.');
+                Swal.fire(
+                  '¿Estás ingresando un número de 1 al 7?',
+                  '¡Por favor intenta otra vez!',
+                  'question'
+                );
                 break;
             }
+            if (ejercicioSemanal2 <= 7) {
+              imprimir = document.createElement('p');
+              resultadoCalculadora = totalGrasa;
 
-            imprimir = document.createElement('p');
-            resultadoCalculadora = totalGrasa;
-
-            imprimir.innerHTML =
-              'La cantidad de Grasas Saludables que debe comer es de ' +
-              resultadoCalculadora +
-              'g';
-            alert(
-              '¡Recuerde que siempre es mejor acudir con un profesional en nutrición!'
-            );
-            resultCalculator.append(imprimir);
-            localStorage.setItem(
-              'resultado',
-              JSON.stringify(
+              imprimir.innerHTML =
                 'La cantidad de Grasas Saludables que debe comer es de ' +
-                  resultadoCalculadora +
-                  'g'
-              )
-            );
-            break;
-          default:
-            alert('Por favor ingresar una de las opciones validas');
+                resultadoCalculadora +
+                'g';
+
+              Swal.fire(
+                '¡Recuerde que siempre es mejor acudir con un profesional en nutrición!'
+              );
+              resultCalculator.append(imprimir);
+              localStorage.setItem(
+                'resultado',
+                JSON.stringify(
+                  'La cantidad de Grasas Saludables que debe comer es de ' +
+                    resultadoCalculadora +
+                    'g'
+                )
+              );
+            }
             break;
         }
         break;
       /* FIN DE CALCULADORA DE PROTEÍNAS Y GRASAS */
       default:
-        alert(
-          'El número ingresado no es válido, por favor ingrese alguno de los números de la lista.'
-        );
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'El número ingresado no es válido, por favor ingrese alguno de los números de la lista.',
+        });
     }
     break;
   }
