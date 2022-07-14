@@ -11,10 +11,11 @@ let resultadosAnteriores = document.getElementById('resultadosAnteriores');
 
 //agregamos el evento que queremos que ejecute el boton
 resultadosAnteriores.addEventListener('click', () => {
-  //* Si el localStorage no tiene nada, mande una alerta y si tiene que lo imprima y borre el botón
+  //* Si el localStorage no tiene nada, manda una alerta y si tiene que lo imprima y borre el botón
   localStorage.length === 0
     ? Swal.fire('Lo sentimos, usted no posee un resultado previo.')
     : correrLocal();
+
   function correrLocal() {
     //* En esta funcion creamos un párrafo para imprimir el localStorage y borramos el botón
     guardarResultado = document.createElement('p');
@@ -66,11 +67,18 @@ function aperturaCalculadoras() {
         );
 
         resultadoCalculadora = calculadora(numeroUno, numeroDos, resultado);
-
-        imprimir = document.createElement('p');
-        imprimir.innerHTML = 'Su resultado es igual a ' + resultadoCalculadora;
-        resultCalculator.append(imprimir);
-        localStorage.setItem('resultado', JSON.stringify(resultadoCalculadora));
+        if (resultadoCalculadora === undefined) {
+          Swal.fire('Lo sentimos, no pudimos efectuar su operación.');
+        } else {
+          imprimir = document.createElement('p');
+          imprimir.innerHTML =
+            'Su resultado es igual a ' + resultadoCalculadora;
+          resultCalculator.append(imprimir);
+          localStorage.setItem(
+            'resultado',
+            JSON.stringify(resultadoCalculadora)
+          );
+        }
         break;
       /* FIN DE CALCULADORA MATEMÁTICA */
 
@@ -85,24 +93,29 @@ function aperturaCalculadoras() {
         );
         let precioFinal = iva(valorIva) + valorIva;
 
-        imprimir = document.createElement('p');
-        resultadoCalculadora = iva(valorIva);
-        imprimir.innerHTML =
-          `El IVA de su producto es de ${resultadoCalculadora}` +
-          '$. \nEl precio final de su producto es de ' +
-          precioFinal +
-          '$';
-        resultCalculator.append(imprimir);
-
-        localStorage.setItem(
-          'resultado',
-          JSON.stringify(
+        if (precioFinal == 0) {
+          Swal.fire('Lo sentimos, no pudimos efectuar su operación.');
+        } else {
+          imprimir = document.createElement('p');
+          resultadoCalculadora = iva(valorIva);
+          imprimir.innerHTML =
             `El IVA de su producto es de ${resultadoCalculadora}` +
-              '$. El precio final de su producto es de ' +
-              precioFinal +
-              '$'
-          )
-        );
+            '$. \nEl precio final de su producto es de ' +
+            precioFinal +
+            '$';
+          resultCalculator.append(imprimir);
+
+          localStorage.setItem(
+            'resultado',
+            JSON.stringify(
+              `El IVA de su producto es de ${resultadoCalculadora}` +
+                '$. El precio final de su producto es de ' +
+                precioFinal +
+                '$'
+            )
+          );
+          botonCalculadora.remove();
+        }
         break;
       /* FIN DE CALCULADORA DE IVA */
 
@@ -179,6 +192,7 @@ function aperturaCalculadoras() {
                     'g'
                 )
               );
+              botonCalculadora.remove();
             }
             break;
 
@@ -242,6 +256,7 @@ function aperturaCalculadoras() {
                     'g'
                 )
               );
+              botonCalculadora.remove();
             }
             break;
         }
@@ -258,3 +273,24 @@ function aperturaCalculadoras() {
   }
   // FIN DE LA CALCULADORA GLOBAL
 }
+
+//GMAIL API´S
+let submitOpinion = document.getElementById('submitOpinion');
+let bloqueDeTexto = document.getElementById('bloqueDeTexto');
+submitOpinion.addEventListener('click', () => {
+  if (bloqueDeTexto.value) {
+    var params = {
+      message: bloqueDeTexto.value,
+    };
+    emailjs
+      .send('service_mpd8qqx', 'template_piv9vqk', params)
+      .then(function () {
+        Swal.fire(
+          'Su mensaje fue enviado con éxito, muchas gracias por colaborar!'
+        );
+      });
+    submitOpinion.remove();
+  } else {
+    Swal.fire('No pudimos enviar su mensaje');
+  }
+});

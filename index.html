@@ -21,20 +21,19 @@
                 <h1 class="animate__animated animate__bounceInDown">¡Bienvenido a la <br> central de
                     <b>calculadoras</b>!
                 </h1>
-                <a href="#secondPart" class="animate__animated animate__rotateIn"><svg
+                <a href="#caja" class="animate__animated animate__rotateIn"><svg
                         xmlns="http://www.w3.org/2000/svg" width="56" height="56" fill="currentColor"
                         class="bi bi-arrow-down" viewBox="0 0 16 16" id="flecha">
                         <path fill-rule="evenodd"
                             d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z" />
                     </svg></a>
             </div>
-        <!*--------------------------------TERMINA-LA-BIENVENIDA-A-LOS-USERS-------------------------------->
+            <!*--------------------------------TERMINA-LA-BIENVENIDA-A-LOS-USERS-------------------------------->
 
                 <!*-------------------------------EMPIEZA-EL-MENU-EN-EL-QUE-APARECE-EL-BOTÓN------------------------->
-                    <div class="activateBoton">
+                    <div class="activateBoton" id="caja">
                         <h2 data-aos="flip-up" data-aos-duration="1000" id="secondPart">Apreta este Botón para acceder a
-                            las
-                            calculadoras</h2>
+                            las calculadoras</h2>
                         <button id="botonCalculadora" type="button" class="btn btn-outline-info" data-aos="flip-down"
                             data-aos-duration="1000">CALCULADORAS</button>
                         <div id="resultCalculator"></div>
@@ -47,10 +46,36 @@
                             </svg>
                             Accione este botón para ver su resultado anterior
                         </a>
+                        <a href="#paginaFinal" class="animate__animated animate__rotateIn" id="flecha"><svg
+                            xmlns="http://www.w3.org/2000/svg" width="56" height="56" fill="currentColor"
+                            class="bi bi-arrow-down" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z" />
+                        </svg></a>
                     </div>
                     <!*---------------------------EMPIEZA-EL-MENU-EN-EL-QUE-APARECE-EL-BOTÓN-------------------->
+
+                        <!*--FORMULARIO-PARA-API-->
+                            <div class="formulario">
+                                <h2 id="paginaFinal" data-aos="zoom-in" data-aos-duration="1250">¡Gracias por ser parte de este proyecto!</h2>
+                                <img src="./img/giphy.gif" alt="">
+                                <form id="form">
+                                    <label for="bloqueDeTexto">¿Podrías dejar tu opinión sobre el proyecto?</label>
+                                    <textarea cols="10" rows="7" id='bloqueDeTexto' required></textarea>
+                                    <button id="submitOpinion" type="button" data-aos="flip-down"
+                                        data-aos-duration="1000">Enviar</button>
+                                </form>
+                            </div>
+                            <!*-FIN-FORMULARIO-PARA-API-->
     </main>
     <script src="./app.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+        (function () {
+            emailjs.init("qs1F4xn9vbFkAj4QC");
+        })();
+    </script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous">
